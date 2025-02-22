@@ -16,10 +16,15 @@ fn main() {
     let pwc = g.cyclic_convolution(&h);
     println!("\nCyclic convolution PWC(x) = {}", pwc);
 
+    // Calculate negacyclic convolution
+    let nwc = g.negacyclic_convolution(&h);
+    println!("\nNegacyclic convolution NWC(x) = {}", nwc);
+
     // Print coefficients in vector notation
     println!("\nCoefficients in vector notation:");
     println!("g = {:?}", g.coefficients);
     println!("h = {:?}", h.coefficients);
     println!("Y(x) = {:?}", y.coefficients);
     println!("PWC(x) = {:?}", pwc.coefficients);
+    println!("NWC(x) = {:?}", nwc.coefficients);
 }

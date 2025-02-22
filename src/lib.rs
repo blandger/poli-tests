@@ -29,13 +29,14 @@ impl Polynomial {
 
     /// Computes cyclic convolution (PWC) with modulo x^n - 1
     pub fn cyclic_convolution(&self, other: &Polynomial) -> Self {
+        println!("Start Cyclic convolution PWC...");
         // First, compute regular polynomial multiplication
         let product = self.multiply(other);
 
         // The size of the result should be max(self.len, other.len)
         let n = self.coefficients.len().max(other.coefficients.len());
         let mut pwc = vec![0; n];
-        println!("PWC ({n})");
+        println!("PWC ( n = {n})");
 
         // Apply modulo x^n - 1 by wrapping coefficients
         for (i, &coef) in product.coefficients.iter().enumerate() {
@@ -51,12 +52,14 @@ impl Polynomial {
 
     /// Computes negacyclic convolution (NWC) with modulo x^n + 1
     pub fn negacyclic_convolution(&self, other: &Polynomial) -> Self {
+        println!("Start Negacyclic convolution NWC...");
         // First, compute regular polynomial multiplication
         let product = self.multiply(other);
 
         // The size of the result should be max(self.len, other.len)
         let n = self.coefficients.len().max(other.coefficients.len());
         let mut nwc = vec![0; n];
+        println!("NWC ( n = {n})");
 
         // Apply modulo x^n + 1 by wrapping coefficients
         // For x^n + 1, when we wrap around, we need to subtract instead of add
